@@ -1,11 +1,13 @@
-package com.minwook.mytriphistory.kotlin.present
+package com.minwook.imagesearch.present
 
 import com.minwook.imagesearch.DAO.Documents
 import java.util.ArrayList
 
-interface ImageListPresent {
-    fun loadListData(query: String, page: Int, size: Int)
-    fun noticeText(text: String)
+object ImageListContract {
+    interface Present {
+        fun loadListData(query: String, page: Int, size: Int)
+        fun noticeText(text: String)
+    }
 
     interface View {
         fun response(list: ArrayList<Documents>?, status: Int)

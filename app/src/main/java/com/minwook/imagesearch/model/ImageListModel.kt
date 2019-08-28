@@ -1,4 +1,4 @@
-package com.minwook.mytriphistory.kotlin.model
+package com.minwook.imagesearch.model
 
 import android.content.Context
 import android.util.Log

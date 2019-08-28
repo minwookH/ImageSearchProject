@@ -1,11 +1,11 @@
-package com.minwook.mytriphistory.kotlin.present
+package com.minwook.imagesearch.present
 
 import android.util.Log
 import com.minwook.imagesearch.DAO.Documents
+import com.minwook.imagesearch.model.ImageListModel
 import com.minwook.imagesearch.model.NetworkCallback
-import com.minwook.mytriphistory.kotlin.model.ImageListModel
 
-class ImageListPresentImpl(var view: ImageListPresent.View): ImageListPresent, NetworkCallback {
+class ImageListPresentImpl(var view: ImageListContract.View): ImageListContract.Present, NetworkCallback {
     val model: ImageListModel = ImageListModel(this)
 
     override fun loadListData(query: String, page: Int, size: Int) {

@@ -7,22 +7,24 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.minwook.imagesearch.DAO.Documents
-import com.minwook.mytriphistory.kotlin.adapter.ImageListAdapter
-import com.minwook.mytriphistory.kotlin.present.ImageListPresent
-import com.minwook.mytriphistory.kotlin.present.ImageListPresentImpl
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.ArrayList
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
 import com.minwook.imagesearch.R
+import com.minwook.imagesearch.adapter.ImageListAdapter
+import com.minwook.imagesearch.present.ImageListContract
+import com.minwook.imagesearch.present.ImageListPresentImpl
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 
-class MainActivity : AppCompatActivity(), ImageListPresent.View{
+class MainActivity : AppCompatActivity(), ImageListContract.View{
 
     private val imageList = arrayListOf<Documents>()
     private lateinit var contentsAdapter: ImageListAdapter
-    private lateinit var present: ImageListPresentImpl
+    val present: ImageListContract.Present by inject { parametersOf(this) }
     var pageCount: Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +38,7 @@ class MainActivity : AppCompatActivity(), ImageListPresent.View{
         image_list.adapter = contentsAdapter
         image_list.addOnScrollListener(ListOnScrollListener())
 
-        present = ImageListPresentImpl(this)
+        //present = ImageListPresentImpl(this)
         present.noticeText("검색어를 입력하세요")
 
         search_view.addTextChangedListener(object : TextWatcher {

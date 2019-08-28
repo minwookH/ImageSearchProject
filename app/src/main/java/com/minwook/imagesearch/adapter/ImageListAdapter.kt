@@ -1,4 +1,4 @@
-package com.minwook.mytriphistory.kotlin.adapter
+package com.minwook.imagesearch.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
